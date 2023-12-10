@@ -9,4 +9,5 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-
+const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
+const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET; 
