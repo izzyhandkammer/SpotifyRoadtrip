@@ -1,4 +1,3 @@
-import './App.css';
 import Dashboard from './pages/dashboard'
 import SignUp from './pages/signup'
 import Login from'./pages/login'
