@@ -41,7 +41,7 @@ function Login() {
 
   return (
     <Flex align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
-      <Box bg={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(0, 0, 0, 0.8)')} p={6} rounded="lg" shadow="md">
+      <Box bg={useColorModeValue('rgba(255, 255, 255, 255)', 'rgba(0, 0, 0, 0.8)')} p={6} rounded="lg" shadow="md">
         <Heading mb={6}>Log In</Heading>
         <Formik
           initialValues={{
