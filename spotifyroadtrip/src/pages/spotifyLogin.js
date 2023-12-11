@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Box, Heading, useColorModeValue, Container, Flex, Image } from '@chakra-ui/react';
 
-const AUTH_URL = process.env.REACT_APP_SPOTIFY_AUTH_URL;
+const AUTH_URL = "https://accounts.spotify.com/authorize?client_id=82535259faeb4f5d898c5ed51fb8398b&response_type=code&redirect_uri=http://localhost:3000/dashboard&scope=playlist-modify-public"
 const SpotifyIcon = 'spotify_logo.svg'; 
 
 export default function SpotifyLogin() {
