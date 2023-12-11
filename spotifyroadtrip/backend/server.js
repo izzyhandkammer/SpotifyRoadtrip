@@ -45,7 +45,7 @@ app.post('/spotify/login', (req, res) => {
         clientId: spotifyClientId,
         clientSecret: spotifyClientSecret
     });
-    // console.log(code);
+    
     spotifyApi.authorizationCodeGrant(code)
     .then(data => {
         res.json({
@@ -59,3 +59,21 @@ app.post('/spotify/login', (req, res) => {
     });
 });
 
+app.get('/api/distance', async (req, res) => {
+    const { departure, arrival } = req.query;
+    const dep = encodeURIComponent(departure);
+    const arr = encodeURIComponent(arrival);
+    const apiKey = process.env.GOOGLE_MAPS_API_KEY;
+    const apiUrl = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${dep}&destinations=${arr}&units=imperial&key=${apiKey}`;
+  
+    try {
+      const response = await axios.get(apiUrl);
+      res.send(response.data);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error retrieving distance data');
+    }
+  });
+  
+  app.listen(8080);
+  
