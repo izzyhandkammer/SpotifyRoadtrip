@@ -11,3 +11,28 @@ app.use(bodyParser.json());
 
 const spotifyClientId = process.env.SPOTIFY_CLIENT_ID;
 const spotifyClientSecret = process.env.SPOTIFY_CLIENT_SECRET; 
+const spotifyCalls = require('./routes/spotifyCalls');
+
+app.use('/spotifyCalls', spotifyCalls);
+
+app.post('/spotify/refresh', (req, res) => {
+    const refreshToken = req.body.refreshToken;
+    
+    const spotifyApi = new SpotifyWebApi({
+        redirectUri: 'http://localhost:3000',
+        clientId: spotifyClientId,
+        clientSecret: spotifyClientSecret,
+        refreshToken: refreshToken
+    });
+
+    spotifyApi.refreshAccessToken()
+    .then(data => {
+        res.json({
+            accessToken: data.body.access_token,
+            expiresIn: data.body.expires_in
+        });
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(400);
+    });
+});
