@@ -24,8 +24,8 @@ function Login() {
 
   return (
     <Flex align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
-      <Box bg={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(0, 0, 0, 0.8)')} p={6} rounded="lg" shadow="md">
-        <Heading mb={6}>Log In</Heading>
+      <Box bg="gray.900" p={9} rounded="lg" shadow="md">
+        <Heading mb={6} color="white">Log In</Heading>
         <Formik
           initialValues={{
             email: '',
@@ -38,18 +38,20 @@ function Login() {
             <form onSubmit={handleSubmit}>
               <Stack spacing={4}>
                 <FormControl isInvalid={!!errors.email && touched.email}>
-                  <FormLabel htmlFor="email">Email Address</FormLabel>
-                  <Field as={Input} id="email" name="email" type="email" variant="outline" />
+                  <FormLabel htmlFor="email" color="white">Email Address</FormLabel>
+                  <Field as={Input} id="email" name="email" type="email" variant="filled" _placeholder={{ color: 'gray.500' }} _focus={{ bg: 'white', borderColor: 'green.500' }}/>
                   <FormErrorMessage>{errors.email}</FormErrorMessage>
                 </FormControl>
                 <FormControl isInvalid={!!errors.password && touched.password}>
-                  <FormLabel htmlFor="password">Password</FormLabel>
+                  <FormLabel htmlFor="password" color="white">Password</FormLabel>
                   <Field
                     as={Input}
                     id="password"
                     name="password"
                     type="password"
-                    variant="outline"
+                    variant="filled"
+                    _placeholder={{ color: 'gray.500' }}
+                    _focus={{ bg: 'white', borderColor: 'green.500' }}
                     validate={(value) => {
                       if (value.length < 6) {
                         return 'Password must be at least 6 characters.';
@@ -58,26 +60,23 @@ function Login() {
                   />
                   <FormErrorMessage>{errors.password}</FormErrorMessage>
                 </FormControl>
-                <Field
-                  as={Checkbox}
-                  id="rememberMe"
-                  name="rememberMe"
-                >
-                  Remember Me
-                </Field>
-                <Button type="submit" colorScheme="blue" size="lg" w="full">
+                <Checkbox id="rememberMe" name="rememberMe" colorScheme="green">
+                  <Text as="span" color="white">Remember Me</Text>
+                </Checkbox>
+                <Button type="submit" bgColor="#1DB954" color="white" size="lg" w="full">
                   Login
                 </Button>
               </Stack>
             </form>
           )}
         </Formik>
-        <Text align="center" mt={4}>
-          New to Spotify Roadtrip? <Link color="blue.500" href="/signup">Sign up here</Link>
+        <Text align="center" mt={4} color="white">
+          New to Spotify Roadtrip? <Link color="#1DB954" href="/signup"> Sign up here</Link>
         </Text>
-        </Box>
+      </Box>
     </Flex>
   );
+  
 }
 
 export default Login;

@@ -8,13 +8,19 @@ export default function SpotifyLogin() {
   const formBackground = useColorModeValue('gray.50', 'gray.700');
 
   return (
-    <Flex height="100vh" alignItems="center" justifyContent="center" align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
+    <Flex
+      height="100vh"
+      alignItems="center"
+      justifyContent="center"
+      bgImage="url('loginBG.png')"
+      bgSize="cover"
+    >
       <Container centerContent>
-        <Box bg={formBackground} p={6} rounded="lg" shadow="md" maxWidth="sm">
-          <Heading mb={6} textAlign="center">Spotify Login</Heading>
-          <Button 
-            onClick={() => window.location.href = AUTH_URL} 
-            colorScheme="green" 
+        <Box bg="gray.900" p={6} rounded="lg" shadow="md" maxWidth="sm">
+          <Heading mb={6} textAlign="center" color="white">Spotify Login</Heading>
+          <Button
+            onClick={() => window.location.href = AUTH_URL}
+            bgColor="#1DB954"
             size="lg"
             w="full"
             leftIcon={<Image src={SpotifyIcon} boxSize="40px" />}
@@ -25,4 +31,5 @@ export default function SpotifyLogin() {
       </Container>
     </Flex>
   );
+  
 }

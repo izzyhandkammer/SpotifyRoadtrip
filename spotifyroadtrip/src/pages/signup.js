@@ -34,8 +34,8 @@ function SignUp() {
 
   return (
     <Flex align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
-      <Box bg={useColorModeValue('white', 'gray.700')} p={8} rounded="lg" shadow="md" w="full" maxW="md">
-        <Heading mb={6}>Sign Up</Heading>
+      <Box bg="gray.900" p={8} rounded="lg" shadow="md" w="full" maxW="sm">
+        <Heading mb={6} color="white">Sign Up</Heading>
           <Formik
             initialValues={{
               name: '',
@@ -48,23 +48,24 @@ function SignUp() {
               <form onSubmit={handleSubmit}>
                 <Stack spacing={4}>
                   <FormControl isInvalid={!!errors.email && touched.email}>
-                    <FormLabel htmlFor="email">Email Address</FormLabel>
-                    <Field as={Input} id="email" name="email" type="email" variant="outline" />
+                    <FormLabel htmlFor="email" color="white">Email Address</FormLabel>
+                    <Field as={Input} id="email" name="email" type="email" variant="filled" _focus={{ bg: "white", borderColor: "#1DB954" }} />
                     <FormErrorMessage>{errors.email}</FormErrorMessage>
                   </FormControl>
                   <FormControl isInvalid={!!errors.name && touched.name}>
-                    <FormLabel htmlFor="name">Name</FormLabel>
-                    <Field as={Input} id="name" name="name" type="text" variant="outline" />
+                    <FormLabel htmlFor="name" color="white">Name</FormLabel>
+                    <Field as={Input} id="name" name="name" type="text" variant="filled" _focus={{ bg: "white", borderColor: "#1DB954" }} />
                     <FormErrorMessage>{errors.name}</FormErrorMessage>
                   </FormControl>
                   <FormControl isInvalid={!!errors.password && touched.password}>
-                    <FormLabel htmlFor="password">Password</FormLabel>
+                    <FormLabel htmlFor="password" color="white">Password</FormLabel>
                     <Field
                       as={Input}
                       id="password"
                       name="password"
                       type="password"
-                      variant="outline"
+                      variant="filled"
+                      _focus={{ bg: "white", borderColor: "#1DB954" }}
                       validate={(value) => {
                         if (value.length < 6) {
                           return 'Password must be at least 6 characters.';
@@ -73,16 +74,18 @@ function SignUp() {
                     />
                     <FormErrorMessage>{errors.password}</FormErrorMessage>
                   </FormControl>
-                  <Button type="submit" colorScheme="blue" size="lg" w="full">
+                  <Button type="submit" bgColor="#1DB954" color="white" size="lg" w="full">
                     Sign Up
                   </Button>
                 </Stack>
               </form>
             )}
           </Formik>
-        </Box>
-      </Flex>
+      </Box>
+    </Flex>
   );
+  
+  
   
 }
 
