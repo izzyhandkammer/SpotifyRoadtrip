@@ -3,6 +3,7 @@ import SignUp from './pages/signup'
 import Login from'./pages/login'
 import SpotifyLogin from './pages/spotifyLogin'
 import {BrowserRouter as Router,Routes,Route,Link} from "react-router-dom";
+import './App.css';
 
 const code = new URLSearchParams(window.location.search).get('code');
 
