@@ -12,7 +12,6 @@ import {
   Checkbox,
   Flex,
   useColorModeValue,
-  Container
 } from '@chakra-ui/react';
 import React from 'react';
 import { Formik, Field } from 'formik';
@@ -36,8 +35,6 @@ function Login() {
         const errorMessage = error.message;
       });
   };
-
-  const formBackground = useColorModeValue('gray.50', 'gray.700');
 
   return (
     <Flex align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
@@ -90,7 +87,7 @@ function Login() {
           )}
         </Formik>
         <Text align="center" mt={4}>
-          Don't have an account? <Link color="blue.500" href="/register">Register here</Link>
+          Don't have an account? <Link color="blue.500" href="/signup">Sign up here</Link>
         </Text>
         </Box>
     </Flex>
