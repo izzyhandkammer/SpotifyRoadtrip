@@ -7,18 +7,29 @@ import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
+import { doc, setDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+
 function SignUp() {
   const navigate = useNavigate();
   const createUser = async (values) => {
     const { email, password } = values;
     createUserWithEmailAndPassword(auth, email, password)
-      .then((auth) => {
-        if (auth) {
-          navigate('/');
-        }
+      .then((userCredential) => {
+        // User is signed up, now add to Firestore
+        return setDoc(doc(db, "users", userCredential.user.uid), {
+          email: email,
+          // ... any other user data you want to store, like username, profile info, etc.
+        });
       })
-      .catch((error) => alert(error.message));
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   };
+  
 
   const formBackground = useColorModeValue('gray.50', 'gray.700');
 
