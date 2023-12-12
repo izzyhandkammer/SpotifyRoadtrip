@@ -2,7 +2,13 @@
 
 Members: Jason Kim, Derek Laboy, Carol Riady, Izzy Handkammer, Grace Dai
 
-The Tech Stack is in the docs folder but here is a brief overview: Frontend - React Backend - Firebase OAuth - Spotify OAuth
+Tech Stack: 
+    APIs: Google Maps Distance Matrix API, Spotify Web API
+    Runtime Environment - Node.js
+    Frontend - React.js
+    Backend - Firebase
+    Third Party Authentication - Spotify OAuth
+
 
 The official branch for this project is Spotify-Branch NOT main. There were some issues when storing our code in a prototype folder so our prototype code is in the folder named "spotifyroadtrip".
 

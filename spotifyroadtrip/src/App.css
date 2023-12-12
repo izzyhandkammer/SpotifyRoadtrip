@@ -1,4 +1,56 @@
-.App {
-    text-align: center;
+.appContainer {
+    background-color: #121212; /* Spotify's background color */
+    color: #fff;
+    font-family: 'Circular Std', Helvetica, Arial, sans-serif; /* Spotify uses Circular, but it's not free, so this is a similar fallback */
+    padding: 20px;
   }
+  
+  .formContainer {
+    background-color: #181818; /* Slightly lighter than the background for contrast */
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .input {
+    background-color: #282828; /* Dark input fields, similar to Spotify's style */
+    border: none;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: calc(100% - 20px); /* Full width minus padding */
+  }
+  
+  .genreContainer {
+    background-color: #181818;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #1DB954; /* Spotify's brand green */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 500px; /* Spotify buttons are usually very rounded */
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #1ED760; /* A lighter green on hover */
+  }
+  
+  .trackInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+  
+  .songs {
+    overflow-y: auto;
+  }
+  
+  /* And so on for other elements... */
   
