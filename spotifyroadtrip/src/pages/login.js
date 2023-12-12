@@ -22,8 +22,6 @@ function Login() {
       });
   };
 
-  const formBackground = useColorModeValue('gray.50', 'gray.700');
-
   return (
     <Flex align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
       <Box bg={useColorModeValue('rgba(255, 255, 255, 0.8)', 'rgba(0, 0, 0, 0.8)')} p={6} rounded="lg" shadow="md">
@@ -75,7 +73,7 @@ function Login() {
           )}
         </Formik>
         <Text align="center" mt={4}>
-          Don't have an account? <Link color="blue.500" href="/register">Register here</Link>
+          Don't have an account? <Link color="blue.500" href="/signup">Sign up here</Link>
         </Text>
         </Box>
     </Flex>

@@ -1,5 +1,5 @@
 import {
-  Button, Input, FormControl, FormLabel, FormErrorMessage, Box, Stack, Heading, useColorModeValue, VStack, Image
+  Button, Input, FormControl, FormLabel, FormErrorMessage, Box, Stack, Heading, useColorModeValue, Flex
 } from '@chakra-ui/react';
 import React from 'react';
 import { Formik, Field } from 'formik';
@@ -31,13 +31,10 @@ function SignUp() {
   };
   
 
-  const formBackground = useColorModeValue('gray.50', 'gray.700');
-
   return (
-    <VStack spacing={8} align="stretch" bgImage="url('loginBG.png')" bgSize="cover" h="100vh">
-      <Image src="logo.png" alignSelf="center" boxSize="150px" mt={12} />
-      <Box bg={useColorModeValue('rgba(255, 255, 255, 255)', 'rgba(0, 0, 0, 0.8)')} p={6} rounded="lg" shadow="md" alignSelf="center">
-        <Heading mb={6}>Sign Up</Heading>
+    <Flex align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
+    <Box bg={useColorModeValue('rgba(255, 255, 255, 255)', 'rgba(0, 0, 0, 0.8)')} p={6} rounded="lg" shadow="md">
+      <Heading mb={6}>Sign Up</Heading>
         <Formik
           initialValues={{
             email: '',
@@ -77,7 +74,7 @@ function SignUp() {
           )}
         </Formik>
       </Box>
-    </VStack>
+    </Flex>
   );
 }
 
