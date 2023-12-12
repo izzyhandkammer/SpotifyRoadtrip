@@ -8,7 +8,7 @@ export default function SpotifyLogin() {
   const formBackground = useColorModeValue('gray.50', 'gray.700');
 
   return (
-    <Flex height="100vh" alignItems="center" justifyContent="center">
+    <Flex height="100vh" alignItems="center" justifyContent="center" align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
       <Container centerContent>
         <Box bg={formBackground} p={6} rounded="lg" shadow="md" maxWidth="sm">
           <Heading mb={6} textAlign="center">Spotify Login</Heading>
