@@ -65,15 +65,17 @@ function Dashboard({ code }) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
-        setEmail(user.email);
-        const userDocRef = doc(firestore, "users", user.uid);
+        const userDocRef = doc(db, "users", user.uid);
         const userDoc = await getDoc(userDocRef);
         if (userDoc.exists()) {
+          setName(userDoc.data().name); // Fetch the name from Firestore
           setTrip(userDoc.data().trips);
         } else {
+          setName(""); // Set name to empty string or default value if user document doesn't exist
           setTrip("no trips recently..");
         }
       } else {
+        setName(""); // Clear the name when user is not logged in
         setTrip(null);
       }
       return unsubscribe;
@@ -170,7 +172,7 @@ function Dashboard({ code }) {
   
   return (
     <div className='appContainer'>
-      <h1>Hi {email}</h1>
+      <h1>Hi {name}</h1>
       <h1>Your most recent trip: {trip}</h1>
       <div className='formContainer'>
         <form onSubmit={handleSubmit}>
