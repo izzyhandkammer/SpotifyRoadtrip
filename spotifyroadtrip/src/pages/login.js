@@ -73,7 +73,7 @@ function Login() {
           )}
         </Formik>
         <Text align="center" mt={4}>
-          Don't have an account? <Link color="blue.500" href="/signup">Sign up here</Link>
+          New to Spotify Roadtrip? <Link color="blue.500" href="/signup">Sign up here</Link>
         </Text>
         </Box>
     </Flex>

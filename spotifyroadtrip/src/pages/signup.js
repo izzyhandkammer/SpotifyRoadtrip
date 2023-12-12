@@ -13,69 +13,77 @@ import { db } from '../firebase';
 function SignUp() {
   const navigate = useNavigate();
   const createUser = async (values) => {
-    const { email, password } = values;
+    const { email, password, name } = values; // Assuming you have a 'name' field in your form values
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // User is signed up, now add to Firestore
         return setDoc(doc(db, "users", userCredential.user.uid), {
           email: email,
-          // ... any other user data you want to store, like username, profile info, etc.
+          name: name, // Save the name to Firestore
+          // ... any other user data you want to store
         });
       })
       .then(() => {
-        navigate('/');
+        navigate('/dashboard'); // Redirect to dashboard after sign-up
       })
       .catch((error) => {
-        alert(error.message);
+        alert(error.message); // Show error message if something goes wrong
       });
   };
   
 
   return (
     <Flex align="center" justify="center" h="100vh" bgImage="url('loginBG.png')" bgSize="cover">
-    <Box bg={useColorModeValue('rgba(255, 255, 255, 255)', 'rgba(0, 0, 0, 0.8)')} p={6} rounded="lg" shadow="md">
-      <Heading mb={6}>Sign Up</Heading>
-        <Formik
-          initialValues={{
-            email: '',
-            password: ''
-          }}
-          onSubmit={createUser}
-        >
-          {({ handleSubmit, errors, touched }) => (
-            <form onSubmit={handleSubmit}>
-              <Stack spacing={4}>
-                <FormControl isInvalid={!!errors.email && touched.email}>
-                  <FormLabel htmlFor="email">Email Address</FormLabel>
-                  <Field as={Input} id="email" name="email" type="email" variant="outline" />
-                  <FormErrorMessage>{errors.email}</FormErrorMessage>
-                </FormControl>
-                <FormControl isInvalid={!!errors.password && touched.password}>
-                  <FormLabel htmlFor="password">Password</FormLabel>
-                  <Field
-                    as={Input}
-                    id="password"
-                    name="password"
-                    type="password"
-                    variant="outline"
-                    validate={(value) => {
-                      if (value.length < 6) {
-                        return 'Password must be at least 6 characters.';
-                      }
-                    }}
-                  />
-                  <FormErrorMessage>{errors.password}</FormErrorMessage>
-                </FormControl>
-                <Button type="submit" colorScheme="blue" size="lg" w="full">
-                  Sign Up
-                </Button>
-              </Stack>
-            </form>
-          )}
-        </Formik>
-      </Box>
-    </Flex>
+      <Box bg={useColorModeValue('white', 'gray.700')} p={8} rounded="lg" shadow="md" w="full" maxW="md">
+        <Heading mb={6}>Sign Up</Heading>
+          <Formik
+            initialValues={{
+              name: '',
+              email: '',
+              password: ''
+            }}
+            onSubmit={createUser}
+          >
+            {({ handleSubmit, errors, touched }) => (
+              <form onSubmit={handleSubmit}>
+                <Stack spacing={4}>
+                  <FormControl isInvalid={!!errors.email && touched.email}>
+                    <FormLabel htmlFor="email">Email Address</FormLabel>
+                    <Field as={Input} id="email" name="email" type="email" variant="outline" />
+                    <FormErrorMessage>{errors.email}</FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={!!errors.name && touched.name}>
+                    <FormLabel htmlFor="name">Name</FormLabel>
+                    <Field as={Input} id="name" name="name" type="text" variant="outline" />
+                    <FormErrorMessage>{errors.name}</FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={!!errors.password && touched.password}>
+                    <FormLabel htmlFor="password">Password</FormLabel>
+                    <Field
+                      as={Input}
+                      id="password"
+                      name="password"
+                      type="password"
+                      variant="outline"
+                      validate={(value) => {
+                        if (value.length < 6) {
+                          return 'Password must be at least 6 characters.';
+                        }
+                      }}
+                    />
+                    <FormErrorMessage>{errors.password}</FormErrorMessage>
+                  </FormControl>
+                  <Button type="submit" colorScheme="blue" size="lg" w="full">
+                    Sign Up
+                  </Button>
+                </Stack>
+              </form>
+            )}
+          </Formik>
+        </Box>
+      </Flex>
   );
+  
 }
 
 export default SignUp;
