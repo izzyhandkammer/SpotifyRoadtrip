@@ -1,10 +1,12 @@
 Proposal 1:
+
 Our project will integrate the Spoonacular API to create a user-friendly solution for individuals looking to make the most of their current food inventory. With this API, users can input the 
 ingredients available in their fridge, and the system will search through their database to generate a list of recipes tailored to those ingredients. We will also incorporate the OpenAI API 
 to analyze the selected recipe and provide a curated list of cocktail and drink options from TheCocktailDB API to complement the meal. Previously crafted recipes will be saved and stored in 
 a database. Additionally, our application will implement Google’s third-party authentication to allow users to sign up and log in with their Google account.
 
 Proposal 2:
+
 Our project proposal is an application designed to craft stylish and weather-appropriate outfits from users' existing wardrobes. Leveraging OpenAI's API, the system will identify articles of 
 clothing from user-uploaded photos. This data, stored in a dedicated database, will then interface with the Pinterest API to gather trending outfit inspirations. To ensure relevance to current
 conditions, the AccuWeather API will provide real-time weather forecasts, influencing the outfit suggestions. Additionally, users can seamlessly and securely log into the platform and 
@@ -14,6 +16,7 @@ synchronize their Pinterest accounts using Google's third-party authentication.
 (Our group faced issues with fetching data from Spoonacular API’s "what's in your fridge" API endpoint, causing us to shift the direction of our project.)
 
 Spotify Roadtrip: (Chosen Proposal)
+
 Often when going on a long road trip or flight, it can be difficult to find the perfect playlist. The genre of the music, as well as the overall playback time of the playlist, are key factors
 in having a good trip. Nobody likes it when you end up playing the same songs over and over again. Our project proposal is an application that uses the Google Maps API to determine the distance 
 of your trip based on your start and end location, then use the Spotify API to generate a Spotify playlist based on the length of your trip and an inputted genre. Users will need to create an 
