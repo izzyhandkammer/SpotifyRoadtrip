@@ -1,6 +1,6 @@
 # 411 Project: Spotify Roadtrip
 
-Members: Jason Kim, Derek Laboy, Carol Riady, Izzy Handkammer, Grace Dai
+Group 5 Members: Jason Kim, Derek Laboy, Carol Riady, Izzy Handkammer, Grace Dai
 
 Tech Stack: 
     APIs: Google Maps Distance Matrix API, Spotify Web API
@@ -9,15 +9,13 @@ Tech Stack:
     Backend - Firebase
     Third Party Authentication - Spotify OAuth
 
+If you would like to run these files on your own system, follow these instructions:
 
-The official branch for this project is Spotify-Branch NOT main. There were some issues when storing our code in a prototype folder so our prototype code is in the folder named "spotifyroadtrip".
+1. Install Node if you haven't already. 
+2. cd into the spotifyroadtrip directory and type in the command line "npm install" to install all the dependencies.
+3. Create a .env file in the spotifyroadtrip/backend and assign GOOGLE_MAPS_API_KEY your API key from the Google developer console. You will also need to get a Spotify Client ID and Client Secret, and assign them to SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET respectively in .env.
+4. In spotifyLogin.js, edit the AUTH_URL const by replacing the Client ID and redirect URI with your own information. (We ran into issues that prevented us from storing the AUTH_URL in .env)
+5. cd into backend and run "node server.js".
+6. cd into spotifyroadtrip and run "npm start". 
 
-Installation & Setup Instructions:
-
-1. Please make sure you have Node installed on your program. 
-2. Go into the spotifyroadtrip directory and type in the command line "npm install". This should install all the dependencies.
-3. Create a .env file in the spotifyroadtrip/backend and assign GOOGLE_MAPS_API_KEY your API key from the Google developer console. 
-4. In the backend folder run "node server.js".
-5. In the spotifyroadtrip folder run "npm start". 
-
-DEMO Link: 
+Video demo: 
