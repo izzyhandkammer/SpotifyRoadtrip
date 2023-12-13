@@ -6,7 +6,6 @@ import { Formik, Field } from 'formik';
 import { auth } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 

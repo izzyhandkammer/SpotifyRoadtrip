@@ -25,7 +25,6 @@ function Dashboard({ code }) {
   const [selectedGenres, setSelectedGenres] = useState(['acoustic']);
   const [email, setEmail] = useState("");
   const [plength, setPlength] = useState(0);
-  const [trip, setTrip] = useState("")
   const auth = getAuth();
 
   useEffect(() => {
@@ -48,13 +47,7 @@ function Dashboard({ code }) {
       event.preventDefault();
       const userRef = doc(db, "users", auth.currentUser.uid);
       // add topics array to user profile in Firestore
-      setDoc(userRef, {email: auth.currentUser.email, trips: `${departure} to ${arrival}` }, { merge: true })
-        .then(() => {
-          console.log("Trip added");
-        })
-        .catch((error) => {
-          alert(error.message); //error message about insufficient permissions when clicking submit button
-        });
+      setDoc(userRef, {email: auth.currentUser.email }, { merge: true })
     } else {
       // user not signed in
       alert("Log in to add trips.");
@@ -68,14 +61,11 @@ function Dashboard({ code }) {
         const userDoc = await getDoc(userDocRef);
         if (userDoc.exists()) {
           setName(userDoc.data().name); // Fetch the name from Firestore
-          setTrip(userDoc.data().trips);
         } else {
           setName(""); // Set name to empty string or default value if user document doesn't exist
-          setTrip("no trips recently..");
         }
       } else {
         setName(""); // Clear the name when user is not logged in
-        setTrip(null);
       }
       return unsubscribe;
     });
@@ -172,20 +162,19 @@ function Dashboard({ code }) {
   return (
     <div className='appContainer' style={{ backgroundColor: '#000', fontFamily: 'Circular, sans-serif', color: '#fff' }}>
       <h1 style={{ fontSize: '2em', marginBottom: '0' }}>Hi {name}</h1>
-      <h1 style={{ fontSize: '1.5em', margin: '0.5em 0 1em' }}>Your most recent trip: {trip}</h1>
       <div className='formContainer' style={{ margin: '0 auto 3em', width: '80%', maxWidth: '1200px' }}>
         <form onSubmit={handleSubmit}>
           <label style={{ display: 'block', margin: '1em 0', fontWeight: 'bold', fontSize: '1.2em' }}>
             Departure:
-            <input type="text" value={departure} onChange={(e) => setDeparture(e.target.value)} className="input" style={{ margin: '1em 0', padding: '0.5em', fontWeight: 'bold', width: '100%' }}/>
+            <input type="text" value={departure} onChange={(e) => setDeparture(e.target.value)} className="input" style={{ margin: '1em 0', padding: '0.5em', fontWeight: 'bold', width: '100%', color: '#fff' }}/>
           </label>
           <label style={{ display: 'block', margin: '1em 0', fontWeight: 'bold', fontSize: '1.2em' }}>
             Arrival:
-            <input type="text" value={arrival} onChange={(e) => setArrival(e.target.value)} className="input" style={{ margin: '1em 0', padding: '0.5em', fontWeight: 'bold', width: '100%' }}/>
+            <input type="text" value={arrival} onChange={(e) => setArrival(e.target.value)} className="input" style={{ margin: '1em 0', padding: '0.5em', fontWeight: 'bold', width: '100%', color: '#fff' }}/>
           </label>
           <h1 style={{ fontSize: '1.2em', margin: '2em 0', fontWeight: 'bold' }}>Distance: {distance}</h1>
-        <h1 style={{ fontSize: '1.2em', margin: '2em 0', fontWeight: 'bold' }}>Duration: {duration}</h1>
-        <div style={{ textAlign: 'center', margin: '2em 0' }}>
+          <h1 style={{ fontSize: '1.2em', margin: '2em 0', fontWeight: 'bold' }}>Duration: {duration}</h1>
+          <div style={{ textAlign: 'center', margin: '2em 0' }}>
             <button type="submit" style={{ padding: '0.5em 1em', fontSize: '1em', fontWeight: 'bold', borderRadius: '5px', cursor: 'pointer', border: 'none', backgroundColor: '#1DB954', color: '#fff' }}>Submit</button>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '1em 0' }}>
@@ -201,13 +190,13 @@ function Dashboard({ code }) {
               />
             </div>
             <button type="button" onClick={() => findSongs(20)} style={{
-              padding: '0.5em 1em', 
-              fontSize: '1em', 
-              fontWeight: 'bold', 
-              borderRadius: '5px', 
-              cursor: 'pointer', 
-              border: 'none', 
-              backgroundColor: '#1DB954', 
+              padding: '0.5em 1em',
+              fontSize: '1em',
+              fontWeight: 'bold',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              border: 'none',
+              backgroundColor: '#1DB954',
               color: '#fff',
               marginLeft: '1em' // Add some space between the select and the button
             }}>
@@ -217,16 +206,17 @@ function Dashboard({ code }) {
         </form>
       </div>
       {tracks.length > 0 && <div style={{ overflowY: 'auto', margin: '3em 0' }} className="songs">
-          <div className='trackInfo' style={{ margin: '2em 0' }}>
-            <div className='numSongs' style={{ fontSize: '1em', fontWeight: 'bold' }}>{tracks.length} Songs</div>
-            <div className='plength' style={{ fontSize: '1em', fontWeight: 'bold' }}>Total Runtime {convertMS(plength)}</div>
-          </div>
-            {tracks.map(track => (
-                <DisplayTrack track={track} key={track.uri}/>
-            ))}
+        <div className='trackInfo' style={{ margin: '2em 0' }}>
+          <div className='numSongs' style={{ fontSize: '1em', fontWeight: 'bold' }}>{tracks.length} Songs</div>
+          <div className='plength' style={{ fontSize: '1em', fontWeight: 'bold' }}>Total Runtime {convertMS(plength)}</div>
+        </div>
+        {tracks.map(track => (
+          <DisplayTrack track={track} key={track.uri}/>
+        ))}
       </div>}
     </div>
   );
+  
   
 }
 
