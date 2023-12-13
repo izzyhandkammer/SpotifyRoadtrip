@@ -1,56 +1,107 @@
-.appContainer {
-    background-color: #121212; /* Spotify's background color */
-    color: #fff;
-    font-family: 'Circular Std', Helvetica, Arial, sans-serif; /* Spotify uses Circular, but it's not free, so this is a similar fallback */
-    padding: 20px;
+.App {
+    text-align: center;
+    background-color: #121212; /* Spotify dark background */
+    color: white; /* White text for better contrast */
   }
   
+
+  body, html {
+    font-family: 'Circular', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Set the background color to black */
+    color: white; /* Set the text color to white for all text in the app */
+    /* Other global styles (e.g., font family) can go here */
+  }
+  
+  /* Removed the App-logo class since it doesn't seem relevant to your current application style */
+  
+  .App-header {
+    background-color: #181818; /* Slightly lighter dark background for the header */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white; /* White text for better contrast */
+  }
+  
+  .App-link {
+    color: #1DB954; /* Spotify green for links */
+  }
+  
+  /* Removed the App-logo-spin keyframes animation for the same reason as the App-logo class */
+  
+  .spotifyLogin {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .appContainer {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+
+
   .formContainer {
-    background-color: #181818; /* Slightly lighter than the background for contrast */
-    border-radius: 4px;
-    padding: 20px;
-    margin-bottom: 20px;
+    width: 80%; /* Adjust the width as per your preference */
+    max-width: 1200px; /* This ensures it doesn't get too wide on larger screens */
+    margin: 0 auto; /* This centers the container */
+    padding: 2em; /* This adds space inside the container */
+    box-sizing: border-box; /* This ensures padding doesn't add to the width */
   }
   
-  .input {
-    background-color: #282828; /* Dark input fields, similar to Spotify's style */
-    border: none;
-    color: #fff;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-    width: calc(100% - 20px); /* Full width minus padding */
-  }
   
   .genreContainer {
-    background-color: #181818;
-    padding: 10px;
-    border-radius: 4px;
-  }
-  
-  button {
-    background-color: #1DB954; /* Spotify's brand green */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 500px; /* Spotify buttons are usually very rounded */
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #1ED760; /* A lighter green on hover */
-  }
-  
-  .trackInfo {
+    padding: 15px 0px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
+    flex-direction: row;
+    justify-content: left;
+    align-items: left;
+    color: black; /* Set text color to white */
+  }
+
+  
+  .basic-multi-select, .input {
+    width: 100%;
+    background-color: #282c34; /* Dark input backgrounds */
+    color: black; /* White text inside inputs */
+    border: none; /* Remove borders */
+  }
+
+
+  
+  .input {
+    margin-left: 5px;
+    margin-right: 10px;
+    border-radius: 3px;
   }
   
   .songs {
-    overflow-y: auto;
+    margin-top: 20px;
+    width: 60%;
+    color: white; /* White text for song list */
   }
   
-  /* And so on for other elements... */
+  .songCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px 0px;
+    padding: 10px;
+    background-color: #282c34; /* Card background */
+    border-radius: 5px;
+  }
+  
+  .songDesc {
+    margin-left: 10px;
+  }
   
