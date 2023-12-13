@@ -45,7 +45,6 @@ function Dashboard({ code }) {
     }
     const auth = getAuth();
     if (auth.currentUser) {
-      // add trip to user profile
       event.preventDefault();
       const userRef = doc(db, "users", auth.currentUser.uid);
       // add topics array to user profile in Firestore
@@ -171,40 +170,56 @@ function Dashboard({ code }) {
 
   
   return (
-    <div className='appContainer'>
-      <h1>Hi {name}</h1>
-      <h1>Your most recent trip: {trip}</h1>
-      <div className='formContainer'>
+    <div className='appContainer' style={{ backgroundColor: '#000', fontFamily: 'Circular, sans-serif', color: '#fff' }}>
+      <h1 style={{ fontSize: '2em', marginBottom: '0' }}>Hi {name}</h1>
+      <h1 style={{ fontSize: '1.5em', margin: '0.5em 0 1em' }}>Your most recent trip: {trip}</h1>
+      <div className='formContainer' style={{ margin: '0 auto 3em', width: '80%', maxWidth: '1200px' }}>
         <form onSubmit={handleSubmit}>
-          <label>
+          <label style={{ display: 'block', margin: '1em 0', fontWeight: 'bold', fontSize: '1.2em' }}>
             Departure:
-            <input type="text" value={departure} onChange={(e) => setDeparture(e.target.value)} className="input"/>
+            <input type="text" value={departure} onChange={(e) => setDeparture(e.target.value)} className="input" style={{ margin: '1em 0', padding: '0.5em', fontWeight: 'bold', width: '100%' }}/>
           </label>
-          <label>
+          <label style={{ display: 'block', margin: '1em 0', fontWeight: 'bold', fontSize: '1.2em' }}>
             Arrival:
-            <input type="text" value={arrival} onChange={(e) => setArrival(e.target.value)} className="input"/>
+            <input type="text" value={arrival} onChange={(e) => setArrival(e.target.value)} className="input" style={{ margin: '1em 0', padding: '0.5em', fontWeight: 'bold', width: '100%' }}/>
           </label>
-          <button type="submit">Submit</button>
+          <h1 style={{ fontSize: '1.2em', margin: '2em 0', fontWeight: 'bold' }}>Distance: {distance}</h1>
+        <h1 style={{ fontSize: '1.2em', margin: '2em 0', fontWeight: 'bold' }}>Duration: {duration}</h1>
+        <div style={{ textAlign: 'center', margin: '2em 0' }}>
+            <button type="submit" style={{ padding: '0.5em 1em', fontSize: '1em', fontWeight: 'bold', borderRadius: '5px', cursor: 'pointer', border: 'none', backgroundColor: '#1DB954', color: '#fff' }}>Submit</button>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '1em 0' }}>
+            <div style={{ flex: '1 1 auto' }}>
+              <Select
+                placeholder="Select Genres"
+                isMulti
+                name="genres"
+                options={genreOptions}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                onChange={e => handleGenreSelect(e)}
+              />
+            </div>
+            <button type="button" onClick={() => findSongs(20)} style={{
+              padding: '0.5em 1em', 
+              fontSize: '1em', 
+              fontWeight: 'bold', 
+              borderRadius: '5px', 
+              cursor: 'pointer', 
+              border: 'none', 
+              backgroundColor: '#1DB954', 
+              color: '#fff',
+              marginLeft: '1em' // Add some space between the select and the button
+            }}>
+              Find Songs
+            </button>
+          </div>
         </form>
-        <h1>Distance: {distance}</h1>
-        <h1>Duration: {duration}</h1>
-        <div className='genreContainer'>
-          <Select
-            placeholder="Select Genres"
-            isMulti
-            name="genres"
-            options={genreOptions}
-            className="basic-multi-select"
-            classNamePrefix="select"
-            onChange={e => handleGenreSelect(e)}
-            />
-        </div>
       </div>
-      <Button onClick={() => findSongs(20)} colorScheme="green" size="md">Find Songs</Button>
-      {tracks.length > 0 && <div style={{overflowy: 'auto'}} className="songs">
-          <div className='trackInfo'>
-            <div className='numSongs'>Number of songs: {tracks.length}</div>
-            <div className='plength'>Playlist Length: {convertMS(plength)}</div>
+      {tracks.length > 0 && <div style={{ overflowY: 'auto', margin: '3em 0' }} className="songs">
+          <div className='trackInfo' style={{ margin: '2em 0' }}>
+            <div className='numSongs' style={{ fontSize: '1em', fontWeight: 'bold' }}>{tracks.length} Songs</div>
+            <div className='plength' style={{ fontSize: '1em', fontWeight: 'bold' }}>Total Runtime {convertMS(plength)}</div>
           </div>
             {tracks.map(track => (
                 <DisplayTrack track={track} key={track.uri}/>
@@ -212,6 +227,7 @@ function Dashboard({ code }) {
       </div>}
     </div>
   );
+  
 }
 
 export default Dashboard;
