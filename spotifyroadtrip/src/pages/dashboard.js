@@ -165,17 +165,17 @@ function Dashboard({ code }) {
       <div className='formContainer' style={{ margin: '0 auto 3em', width: '80%', maxWidth: '1200px' }}>
         <form onSubmit={handleSubmit}>
           <label style={{ display: 'block', margin: '1em 0', fontWeight: 'bold', fontSize: '1.2em' }}>
-            Departure:
+            Start:
             <input type="text" value={departure} onChange={(e) => setDeparture(e.target.value)} className="input" style={{ margin: '1em 0', padding: '0.5em', fontWeight: 'bold', width: '100%', color: '#fff' }}/>
           </label>
           <label style={{ display: 'block', margin: '1em 0', fontWeight: 'bold', fontSize: '1.2em' }}>
-            Arrival:
+            Destination:
             <input type="text" value={arrival} onChange={(e) => setArrival(e.target.value)} className="input" style={{ margin: '1em 0', padding: '0.5em', fontWeight: 'bold', width: '100%', color: '#fff' }}/>
           </label>
           <h1 style={{ fontSize: '1.2em', margin: '2em 0', fontWeight: 'bold' }}>Distance: {distance}</h1>
           <h1 style={{ fontSize: '1.2em', margin: '2em 0', fontWeight: 'bold' }}>Duration: {duration}</h1>
           <div style={{ textAlign: 'center', margin: '2em 0' }}>
-            <button type="submit" style={{ padding: '0.5em 1em', fontSize: '1em', fontWeight: 'bold', borderRadius: '5px', cursor: 'pointer', border: 'none', backgroundColor: '#1DB954', color: '#fff' }}>Submit</button>
+            <button type="submit" style={{ padding: '0.5em 1em', fontSize: '1em', fontWeight: 'bold', borderRadius: '5px', cursor: 'pointer', border: 'none', backgroundColor: '#1DB954', color: '#fff' }}>Process Trip</button>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '1em 0' }}>
             <div style={{ flex: '1 1 auto' }}>

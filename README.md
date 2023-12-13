@@ -3,11 +3,11 @@
 Group 5 Members: Jason Kim, Derek Laboy, Carol Riady, Izzy Handkammer, Grace Dai
 
 Tech Stack: 
-    APIs: Google Maps Distance Matrix API, Spotify Web API
-    Runtime Environment - Node.js
-    Frontend - React.js
-    Backend - Firebase
-    Third Party Authentication - Spotify OAuth
+    APIs: Google Maps API, Spotify Web API
+    Runtime Environment: Node.js
+    Frontend: React
+    Backend: Firebase
+    Third Party Authentication: Spotify OAuth
 
 If you would like to run these files on your own system, follow these instructions:
 
@@ -18,4 +18,4 @@ If you would like to run these files on your own system, follow these instructio
 5. cd into backend and run "node server.js".
 6. cd into spotifyroadtrip and run "npm start". 
 
-Video demo: 
+Video demo: https://drive.google.com/file/d/1aTX7P-BWoIlOd3IZi-wGcd_3ilofHHgW/view?usp=sharing 
