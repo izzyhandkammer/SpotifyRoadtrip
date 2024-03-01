@@ -1,6 +1,6 @@
 # 411 Project: Spotify Roadtrip
 
-Group 5 Members: Jason Kim, Derek Laboy, Carol Riady, Izzy Handkammer, Grace Dai
+Contributors: Jason Kim, Derek Laboy, Carol Riady, Izzy Handkammer, Grace Dai
 
 Tech Stack: 
     APIs: Google Maps API, Spotify Web API
