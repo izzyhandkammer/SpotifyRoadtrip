@@ -1,4 +1,4 @@
-# 411 Project: Spotify Roadtrip
+# Spotify Roadtrip
 
 Contributors: Jason Kim, Derek Laboy, Carol Riady, Izzy Handkammer, Grace Dai
 
